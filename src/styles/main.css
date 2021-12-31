@@ -5,3 +5,14 @@
     font-weight: bold;
     padding: 20px 0;
 }
+
+.list_tasks {
+    list-style: none;
+}
+
+.list_tasks > li {
+    padding-bottom: 10px;
+    width: 250px;
+    margin: auto;
+    text-align: left;
+}
