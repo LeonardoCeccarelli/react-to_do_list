@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import InputText from './InputText';
+import SingleTask from './SingleTask';
 
 class Main extends Component {
 
@@ -16,6 +17,12 @@ class Main extends Component {
         this.setState({ listTask: newList })
     }
 
+    removeTask = (i) => {
+        let newList = this.state.listTask
+        newList.splice(i, 1)
+        this.setState({ listTask: newList })
+    }
+
     render() {
         return (
             <div>
@@ -23,7 +30,7 @@ class Main extends Component {
                 <InputText onAddNewTask={this.addNewTask} />
                 <ul className='list_tasks'>
                     {this.state.listTask.map((value, i) => {
-                        return <li key={i}>{value}</li>
+                        return <SingleTask onRemoveTask={this.removeTask} key={i} i={i} text={value} />
                     })}
                 </ul>
             </div>

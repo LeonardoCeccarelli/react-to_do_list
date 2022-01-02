@@ -11,22 +11,26 @@ class InputText extends Component {
         this.setState({ inputValue: event.target.value })
     }
 
-    pushNewTask = () => {
-        let newTask = this.state.inputValue
+    pushNewTask = (e) => {
 
-        if (!newTask.trim()) {
+        if (e.key === 'Enter' || !e.key) {
+
+            let newTask = this.state.inputValue
+
+            if (!newTask.trim()) {
+                this.setState({ inputValue: "" })
+                return
+            }
+
+            this.props.onAddNewTask(newTask.trim())
             this.setState({ inputValue: "" })
-            return
         }
-
-        this.props.onAddNewTask(newTask.trim())
-        this.setState({ inputValue: "" })
     }
 
     render() {
         return (
             <div className='input_text'>
-                <input type="text" value={this.state.inputValue} onChange={this.handleChange} placeholder="Inserire la task"></input>
+                <input type="text" value={this.state.inputValue} onChange={this.handleChange} onKeyDown={this.pushNewTask} placeholder="Inserire la task"></input>
                 <button type="button" onClick={this.pushNewTask}>Add</button>
             </div>
         );

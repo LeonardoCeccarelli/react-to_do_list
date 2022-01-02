@@ -6,13 +6,35 @@
     padding: 20px 0;
 }
 
-.list_tasks {
-    list-style: none;
-}
-
 .list_tasks > li {
-    padding-bottom: 10px;
     width: 250px;
     margin: auto;
     text-align: left;
+    padding: 10px 20px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list_tasks > li:hover {
+    border: 2px solid black;
+}
+
+.list_tasks > li.danger:hover {
+    border: 2px solid red;
+}
+
+.cross_delete {
+    opacity: 0;
+}
+
+.list_tasks > li.danger > .cross_delete {
+    color: red;
+}
+
+.list_tasks > li:hover .cross_delete {
+    opacity: 1;
 }
